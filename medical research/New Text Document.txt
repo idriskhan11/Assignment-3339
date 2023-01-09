@@ -1,0 +1,16 @@
+Medical research application ..
+1.//implementation Adding Diseases of taking tha class Diseases and attributes
+2.case 2 of adding symptoms and case 3 of patient data has not implemented.
+
+
+
+open the visual studio code
+1. select the project entry pint as mainui1 and run the program
+2. only one file has many classes.
+
+
+
+
+suugestions
+1. little bit confusion arrived while adding symptom  
+
