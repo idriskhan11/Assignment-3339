@@ -178,16 +178,39 @@ namespace SampleDataAccessApp
                 }
 
             }
+       }     
+        
+        //7. Write a function that allows to insert a record using connected model and using Stored Procedure.*/
+        private static void InsertStorProc(string name,string adress,int salary, int deptid)
+        {
+            int empid =0;
+            SqlCommand command = new SqlCommand("InsertEmployee", con);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@empname", name);
+            command.Parameters.AddWithValue("@empadress",adress);
+            command.Parameters.AddWithValue("@empsalary", salary);
+            command.Parameters.AddWithValue("@deptId", deptid);
+            command.Parameters.AddWithValue("empId", empid);
+            command.Parameters[4].Direction = ParameterDirection.Output;
+            try
+            {
+                con.Open();
+                command.ExecuteNonQuery();
+                empid = (int)command.Parameters[4].Value;
+                Console.WriteLine("The EmpId of the newly Added Employee is:"+empid);
 
-
-
-
-
+            }
+            catch(SqlException ex){
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+                
 
         }
 
-
-        //7. Write a function that allows to insert a record using connected model and using Stored Procedure.*/
 
         //Entry Point
         static void Main(string[] args)
@@ -210,6 +233,7 @@ namespace SampleDataAccessApp
             //{
             //    Console.WriteLine("EmpId:" + item.EmpId + "\n EmpName:" + item.EmpName+"\n EmpAdress:" + item.EmpAdress+"\n Salary:" + item.salary+"\n DeptId:" + item.DeptId);
             //}
+             //InsertStorProc("aaradhya ", "Chikkamagaluru", 75000, 5);
         }
     }
 }
