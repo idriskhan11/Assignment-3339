@@ -21,20 +21,7 @@ namespace SampleDataAccessApp
         public int DeptId { get; set; }
         public int mgrid { get; set; }
     }
-    /*
-
-
-
-
-
-
-
-
-
-6. Write a function that finds Employees with matching Name using disconnected model.
-
-7. Write a function that allows to insert a record using connected model and using Stored Procedure.*/
-    class Assignments7
+        class Assignments7
     {
 
 
@@ -180,7 +167,19 @@ namespace SampleDataAccessApp
             }
        }     
         
-        //7. Write a function that allows to insert a record using connected model and using Stored Procedure.*/
+        //7. Write a function that allows to insert a record using connected model and using Stored Procedure.
+            
+            //USed Insert Procedure
+            /* create procedure InsertEmployee(
+                    @empname varchar(max),
+                    @empAdress varchar(max),
+                    @empsalary int,
+                    @deptid int,
+                    @empID int output
+                    )
+                    as
+                    Insert into Employee values(@empname,@empadress,@empsalary,@deptid)
+                    set @empId=@@IDENTITY*/
         private static void InsertStorProc(string name,string adress,int salary, int deptid)
         {
             int empid =0;
